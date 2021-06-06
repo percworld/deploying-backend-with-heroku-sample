@@ -1,11 +1,11 @@
-const cors = require('cors');
-const path = require('path');
+//const cors = require('cors');
+//const path = require('path');
 const express = require('express');
 const fetch = require('node-fetch');
 const app = express();
 // app.use(express.static(path.join(__dirname, 'build')));
 app.use(express.json());
-app.use(cors());
+//app.use(cors());
 
 // app.locals.title = "Setlift";
 
@@ -86,6 +86,6 @@ app.get('/', (req, res) => { // send a get request to root directory ('/' is thi
     })
 })
 
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => console.log(`${app.locals.title} Server started on ${PORT}`))
