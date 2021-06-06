@@ -3,11 +3,11 @@ const path = require('path');
 const express = require('express');
 const fetch = require('node-fetch');
 const app = express();
-app.use(express.static(path.join(__dirname, 'build')));
+// app.use(express.static(path.join(__dirname, 'build')));
 app.use(express.json());
 app.use(cors());
 
-app.locals.title = "Setlift";
+// app.locals.title = "Setlift";
 
 const baseUrl = "https://phantasytour.com/api"
 const checkResponse = (response) => {
