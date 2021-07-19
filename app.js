@@ -3,6 +3,7 @@ const cors = require('cors');
 const express = require('express');
 const fetch = require('node-fetch');
 const app = express();
+
 // app.use(express.static(path.join(__dirname, 'build')));
 app.use(express.json());
 app.use(cors());
@@ -37,6 +38,13 @@ app.get('/plays/:songId', async (req, res) => {
   const songs = await fetch(`${baseUrl}/songs/${songId}/shows?sEcho=1&iColumns=5&sColumns=Show.DateTime%2CShow.Venue.Name%2CShow.Venue.Locale%2CSetNumber%2CPosition&iDisplayStart=0&iDisplayLength=250&mDataProp_0=DateTime&sSearch_0=&bRegex_0=false&bSearchable_0=true&bSortable_0=true&mDataProp_1=Venue&sSearch_1=&bRegex_1=false&bSearchable_1=true&bSortable_1=true&mDataProp_2=Venue.Locale&sSearch_2=&bRegex_2=false&bSearchable_2=true&bSortable_2=true&mDataProp_3=SongStats.SetNumber&sSearch_3=&bRegex_3=false&bSearchable_3=true&bSortable_3=true&mDataProp_4=SongStats.Position&sSearch_4=&bRegex_4=false&bSearchable_4=true&bSortable_4=true&sSearch=&bRegex=false&iSortCol_0=0&sSortDir_0=desc&iSortingCols=1&_=1618599207911`)
     .then(checkResponse)
   res.json(songs);
+})
+
+app.get('/show/:showId', async (req, res) => {
+  const showId = req.params.showId;
+  const show = await fetch(`${baseUrl}/shows/${showId}`)
+    .then(checkResponse)
+  res.json(show);
 })
 
 app.get('/set/:showId', async (req, res) => {
