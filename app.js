@@ -71,7 +71,7 @@ app.get('/bands/:bandId/tours', async (req, res) => {
 app.get('/latestShows/:bandId', async (req, res) => {
   const id = req.params.bandId;
   console.log(req.params)
-  const shows = await fetch(`${baseUrl}/bands/${id}/shows?&page=1`)
+  const shows = await fetch(`${baseUrl}/bands/${id}/shows`)
     .then(checkResponse)
   res.json(shows);
 })
