@@ -68,10 +68,10 @@ app.get('/bands/:bandId/tours', async (req, res) => {
   res.json(show);
 })
 
-app.get('/latestShows/:bandId', async (req, res) => {
+app.get('/latestShows/:bandId/:page', async (req, res) => {
   const id = req.params.bandId;
-  console.log(req.params)
-  const shows = await fetch(`${baseUrl}/bands/${id}/shows?pageSize=3000&page=1`)
+  const page = req.params.page;
+  const shows = await fetch(`${baseUrl}/bands/${id}/shows?pageSize=300&page=${page}`)
     .then(checkResponse)
   res.json(shows);
 })
