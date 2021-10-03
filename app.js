@@ -26,6 +26,13 @@ app.get('/songs', async (req, res) => {
   res.json(songs);
 })
 
+app.get('/topSongs/:bandId', async (req, res) => {
+  const bandId = req.query.bandId;
+  const songs = await fetch(`${baseUrl}/bands/${bandId}/songs?%24orderby=playCount`)
+    .then(checkResponse)
+  res.json(songs);
+})
+
 app.get('/songs/:songId', async (req, res) => {
   const songId = req.params.songId;
   const songs = await fetch(`${baseUrl}/songs/${songId}`)
