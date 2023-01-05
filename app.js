@@ -21,7 +21,7 @@ const checkResponse = (response) => {
 
 app.get('/songs', async (req, res) => {
   const bandId = req.query.bandId;
-  const songs = await fetch(`${baseUrl}/songs/?bandId=${bandId}`)
+  const songs = await fetch(`${baseUrl}/bands/?bandId=${bandId}/songs`)
     .then(checkResponse)
   res.json(songs);
 })
